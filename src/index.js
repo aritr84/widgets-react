@@ -1,12 +1,9 @@
 // import react and reactDOM
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 
 // create app component
-
-const App = function () {
-  return <div>Hello World</div>;
-};
 
 // render using react dom
 
