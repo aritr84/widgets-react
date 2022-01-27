@@ -6,10 +6,13 @@ const Dropdown = function ({ options, selected, onSelectedChange }) {
     document.body.addEventListener(
       "click",
       () => {
-        console.log("Body clicked");
+        //console.log("Body clicked");
         setOpen(false);
       },
       { capture: true }
+      // for react v17 we have to add this so that addEventListener() can function properly.
+      // 1st - addEventListener will be called
+      // then - event listeners added using react and it will follow event bubbling.
     );
   }, []);
   const renderedOPtion = options.map((option) => {
@@ -22,7 +25,7 @@ const Dropdown = function ({ options, selected, onSelectedChange }) {
         key={option.value}
         className="item"
         onClick={() => {
-          console.log("Item Clicked");
+          //console.log("Item Clicked");
           onSelectedChange(option);
         }}
       >
@@ -36,7 +39,7 @@ const Dropdown = function ({ options, selected, onSelectedChange }) {
         <label className="label">Select a Color</label>
         <div
           onClick={() => {
-            console.log("Dropdown clicked");
+            //console.log("Dropdown clicked");
             setOpen(!open);
           }}
           className={`ui selection dropdown ${open ? "visible open" : ""}`}
