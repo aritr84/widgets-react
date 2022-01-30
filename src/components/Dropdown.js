@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 
 const Dropdown = function ({ options, selected, onSelectedChange }) {
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
     document.body.addEventListener(
       "click",
-      () => {
+      (event) => {
         //console.log("Body clicked");
+        console.log(event.target);
         setOpen(false);
       },
       { capture: true }
@@ -46,10 +48,7 @@ const Dropdown = function ({ options, selected, onSelectedChange }) {
         >
           <i className="dropdown icon"></i>
           <div className="text">{selected.label}</div>
-          <div
-            onClick={() => setOpen(!open)}
-            className={`menu ${open ? `visible transition` : ""}`}
-          >
+          <div className={`menu ${open ? `visible transition` : ""}`}>
             {renderedOPtion}
           </div>
         </div>
